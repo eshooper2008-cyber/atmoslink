@@ -33,4 +33,5 @@ void loop() {
   data.UV = VOLTS / 0.1;                     // Convert voltage to UV index  
 
   radio.write(&data, sizeof(data));          // Send sensor data via RF24  
+  delay(2000);                               // AM2320 needs about 2 s between readings
 }               

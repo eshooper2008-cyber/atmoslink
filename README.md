@@ -64,8 +64,8 @@ A push button on interrupt pin D2 cycles through the screens with `SLIDE = (SLID
 
 | Screen | Shows |
 |---|---|
-| **Temperature** | A "feeling" from *Freezing* (< 10 °C) to *Very hot* (> 34 °C), with a snowflake, room or sun icon. It also tracks the highest and lowest temperature since power-on. |
-| **Humidity** | *Dry* (< 20 %), *Comfortable*, *Humid* or *Very humid* (> 70 %), with cactus and rain icons |
+| **Temperature** | The current temperature, the highest and lowest since power-on, and a "feeling" from *Freezing* (< 10 °C) to *Very hot* (≥ 34 °C), with a snowflake, room or sun icon |
+| **Humidity** | *Dry* (< 20 %), *Comfortable*, *Humid* or *Very humid* (≥ 70 %), with cactus and rain icons |
 | **UV** | The UV index, with an icon for five levels from very low to very high |
 
 The icons started as drawings on an iPad. I turned them into pixel art, then into the hex arrays the SSD1306 OLED driver uses (`drawBitmap()`).

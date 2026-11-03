@@ -6,7 +6,7 @@
 
 
 
-int SLIDE = 0;                                                      //Declaring SLIDE Variable
+volatile int SLIDE = 0;                                             //Declaring SLIDE Variable (volatile: changed inside the interrupt)
 float LOWTEMP = 100;                                                //Declaring LOWTEMP Variable
 float HIGHTEMP = -100;                                              //Declaring HIGHTEMP Variable
 
@@ -651,7 +651,6 @@ void TEMP(SensorData data) {                                        // Function 
   display.print(LOWTEMP);                                           // Displaying data
   display.print((char)247);                                         // Degree symbol
   display.println("C          ");                                   // Displaying data
-  display.clearDisplay();                                           // Displaying data
   display.print("Feeling = ");                                      // Displaying data
 
   if (data.TEMP < 10.00) {
@@ -672,7 +671,7 @@ void TEMP(SensorData data) {                                        // Function 
   } else if (data.TEMP < 34.00) {                                   // Changing bitmap based on temp
     display.print("HOT");                                           // Changing bitmap based on temp
    display.drawBitmap(30, -5, SUN, 100, 50, WHITE);                 // Changing bitmap based on temp
-  } else if (data.TEMP > 34.01) {                                   // Changing bitmap based on temp
+  } else {                                                          // Changing bitmap based on temp (34 C and above)
     display.print("VERY HOT");                                      // Changing bitmap based on temp
     display.drawBitmap(24, -1, SUN, 100, 32, WHITE);                // Changing bitmap based on temp
   }
@@ -702,7 +701,7 @@ void HUM(SensorData data) {                                         // Function 
     display.print("Humid");                                         // Changing bitmap based on HUM
     display.drawBitmap(0, 30, Rain2, 128, 32, WHITE);               // Changing bitmap based on HUM
   }
-  else if (data.HUM>70){                                            // Changing bitmap based on HUM
+  else {                                                            // Changing bitmap based on HUM (70% and above)
     display.print("Very Humid");                                    // Changing bitmap based on HUM
     display.drawBitmap(0, 30, Rain3, 128, 32, WHITE);               // Changing bitmap based on HUM
   }
@@ -729,7 +728,7 @@ void UV(SensorData data) {                                          // Function 
   } else if (data.UV < 8) {                                         // Changing bitmap based on UV
     display.drawBitmap(20, 15, HIGHUV, 100, 64, WHITE);             // Changing bitmap based on UV
    
-  } else if (data.UV < 11) {                                        // Changing bitmap based on UV
+  } else {                                                          // Changing bitmap based on UV (8 and above)
     display.drawBitmap(20, 15, VERYHIGHUV, 100, 64, WHITE);         // Changing bitmap based on UV
     
   }
